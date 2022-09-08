@@ -24,17 +24,9 @@ print('\n'.join([book['Название'] for book in response]), end='\n-------
 
 
 # Задание №5
-is_random = input('Случайный запрос? (y/n) ').lower() == 'y'
-if is_random:
-    resp = random.choices(books, k=20)
-else:
-    request = input('Введите запрос: ')
-    #! TODO Выбрать одно из двух
-    resp = list(filter(lambda book: request in book['Название'], books))[:20]
-    # resp = list(filter(lambda book: request in book['Автор'] or request in book['Автор (ФИО)'], books))[:20]
+resp = random.choices(books, k=20)
 
 with open('task5.txt', 'w', encoding='utf-8') as f:
-    #? Уточнить, что такое <год> в формате вывода
     f.write('\n'.join([f'{b["Автор"]}. {b["Название"]} - {b["Дата поступления"]}' for b in resp]))
     print('Файл task5.txt успешно создан', end='\n----------\n')
 
